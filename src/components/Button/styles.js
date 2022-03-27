@@ -5,7 +5,7 @@ export const ButtonSubmit = styled.TouchableOpacity`
     height: 40px;
     background-color: ${({ theme }) => theme.colors.purple};
     margin-top: 17px;
-    border-radius: 20px;
+    border-radius: 8px;
     align-items: center;
     justify-content: center;
 `;

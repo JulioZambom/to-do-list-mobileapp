@@ -1,6 +1,6 @@
-import { create } from 'apisauce';
+import axios from 'axios';
 
-const api = create({
+const api = axios.create({
     baseURL: 'https://to-do-list-juliozambom.herokuapp.com'
 });
 

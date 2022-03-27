@@ -6,7 +6,7 @@ const TextInput = ({placeholder, password, onChangeText, value}) => {
     return(
         <DropAnimation>
         <Container>
-            <Input placeholder={placeholder} secureTextEntry={password} value={value} onChangeText={onChangeText}/>
+            <Input placeholder={placeholder} placeholderTextColor='rgba(0,0,0,0.3)' secureTextEntry={password} onChangeText={onChangeText}/>
         </Container>
         </DropAnimation>
     );

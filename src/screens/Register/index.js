@@ -70,24 +70,20 @@ const Register = () => {
             </DropAnimation>     
             <TextInput 
             placeholder='Name...'
-            value={nameInput}
             onChangeText={(nameInput) => setNameInput(nameInput)}/>
             
             <TextInput 
             placeholder='Email...'
-            value={emailInput}
             onChangeText={(emailInput) => setEmailInput(emailInput)}/> 
             
             <TextInput 
             placeholder='Password...'
             password={true}
-            value={passwordInput}
             onChangeText={(passwordInput) => setPasswordInput(passwordInput)}/>
 
             <TextInput 
             placeholder='Confirm password...' 
             password={true}
-            value={confirmPasswordInput}
             onChangeText={(confirmPasswordInput) => setConfirmPasswordInput(confirmPasswordInput)}/>
 
             <Button 

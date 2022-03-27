@@ -10,8 +10,9 @@ export const Input = styled.TextInput`
     background-color: ${({ theme }) => theme.colors.white};
     flex: 1;
     font-size: 13px;
-    border-radius: 20px;
+    padding-top: 3px;
+    border-radius: 8px;
     padding-left: 24px;
-    font-family: ${({ theme }) => theme.fonts.SEMIBOLD};
+    font-family: ${({ theme }) => theme.fonts.BOLD};
     color: ${({ theme }) => theme.colors.black};
 `;

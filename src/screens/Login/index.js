@@ -40,12 +40,10 @@ const Login = () => {
             </DropAnimation>
             <TextInput 
             placeholder='Email...' 
-            value={loginInput}
             onChangeText={(loginInput) => setLoginInput(loginInput)}/>
 
             <TextInput 
             placeholder='Password...' 
-            value={passwordInput}
             onChangeText={(passwordInput) => setPasswordInput(passwordInput)}
             password={true}/>
 
