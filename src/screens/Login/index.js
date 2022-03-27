@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import api from '../../services/api';
 
 import { Container, LoginContainer, TopContainer, SignUpButton, Title, Text } from  './styles';
 
@@ -38,7 +39,7 @@ const Login = () => {
                 </TopContainer>
             </DropAnimation>
             <TextInput 
-            placeholder='Login...' 
+            placeholder='Email...' 
             value={loginInput}
             onChangeText={(loginInput) => setLoginInput(loginInput)}/>
 

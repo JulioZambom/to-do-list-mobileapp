@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as auth from '../services/auth';
+import api from '../services/api';
+import { NavigationContainer } from '@react-navigation/native';
 
 const AuthContext = createContext();
 
@@ -22,12 +23,18 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     async function signIn() {
-        const response = await auth.signIn();
-        setUser(response.user);
-
-        await AsyncStorage.setItem('@Auth:user', JSON.stringify(response.user));
-        await AsyncStorage.setItem('@Auth:token', response.token);
+        const response = await api.post('/users');
+        console.log(response.data);
     };
+
+    async function signUp(name, email, password){
+        const response = await api.post('/users', {name, email, password});
+        if(response.data.error){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     function logOut() {
         AsyncStorage.clear().then(() => {
@@ -40,6 +47,7 @@ export const AuthProvider = ({ children }) => {
     value={{signed: user != null ? true : false,
     user: user,
     signIn,
+    signUp,
     logOut}}>
         {children}
     </AuthContext.Provider>
