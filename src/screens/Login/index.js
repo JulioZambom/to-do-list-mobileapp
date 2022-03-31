@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import api from '../../services/api';
 
 import { Container, LoginContainer, TopContainer, SignUpButton, Title, Text } from  './styles';
 
@@ -14,7 +13,7 @@ import KeyboardAvoidingWrapper from '../../components/KeyboardAvoidingWrapper';
 import AuthContext from '../../contexts/auth';
 
 const Login = () => {
-    const[loginInput, setLoginInput] = useState('');
+    const[emailInput, setEmailInput] = useState('');
     const[passwordInput, setPasswordInput] = useState('');
 
     const navigation = useNavigation();
@@ -24,8 +23,8 @@ const Login = () => {
         
     const { signIn } = useContext(AuthContext);
 
-    async function handleSignIn(){
-        signIn();
+    function handleSignIn(){
+        signIn(emailInput, passwordInput);
     }
 
     return(
@@ -40,7 +39,7 @@ const Login = () => {
             </DropAnimation>
             <TextInput 
             placeholder='Email...' 
-            onChangeText={(loginInput) => setLoginInput(loginInput)}/>
+            onChangeText={(emailInput) => setEmailInput(emailInput)}/>
 
             <TextInput 
             placeholder='Password...' 

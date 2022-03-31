@@ -14,5 +14,5 @@ export const Input = styled.TextInput`
     border-radius: 8px;
     padding-left: 24px;
     font-family: ${({ theme }) => theme.fonts.BOLD};
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.colors.black[100]};
 `;

@@ -19,6 +19,8 @@ const Register = () => {
     const[passwordInput, setPasswordInput] = useState('');
     const[confirmPasswordInput, setConfirmPasswordInput] = useState('');
 
+    const { signUp } = useContext(AuthContext);
+
     const navigation = useNavigation();
 
     const height = Dimensions.get('window').height;
@@ -29,8 +31,6 @@ const Register = () => {
         return true;
     });
 
-    const { signUp } = useContext(AuthContext);
-
     function showToast(text) {
         ToastAndroid.showWithGravityAndOffset(
             text,
@@ -39,7 +39,7 @@ const Register = () => {
             0, 75);
     }
 
-    async function handleSignUp(){
+    function handleSignUp(){
         if(nameInput === '' || passwordInput === '' || confirmPasswordInput === '' || emailInput === ''){
             showToast("Don't leave any fields empty")
 
@@ -47,15 +47,8 @@ const Register = () => {
             showToast("Passwords doesn't match")
 
         } else {
-            const userCreated = await signUp(nameInput, emailInput, passwordInput);
-            if(userCreated){
-                showToast('You are now registered! Sign in please.');
-                navigation.replace('Login');
-            } else {
-                showToast('An error ocurred during register');
-            }
+            signUp(nameInput, emailInput, passwordInput);
         }
-        
     }
 
     return(

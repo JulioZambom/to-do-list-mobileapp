@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 export const ButtonSubmit = styled.TouchableOpacity`
     width: 100%;
     height: 40px;
-    background-color: ${({ theme }) => theme.colors.purple};
+    background-color: ${({ theme, isLight }) => isLight ? theme.colors.main : theme.colors.purple};
     margin-top: 17px;
     border-radius: 8px;
     align-items: center;

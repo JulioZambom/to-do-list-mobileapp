@@ -23,7 +23,7 @@ export const UserTitle = styled.Text`
 export const Title = styled.Text`
     font-family: ${({ theme }) => theme.fonts.BOLD};
     font-size: 28px;
-    color: ${({ theme }) => theme.colors.black}
+    color: ${({ theme, isLight }) => isLight ? theme.colors.white : theme.colors.black[200]}
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -45,25 +45,39 @@ export const CardContainer = styled.ScrollView`
     padding: 0px 24px;
 `;
 
-export const Card = styled.View`
-    background-color: ${({ theme, isComplete }) => isComplete ? theme.colors.gray['200'] : theme.colors.white};
-    border-radius: 20px;
-    padding: 12px 16px;
-    height: 107px;
-    margin-top: 6px;
-    margin-bottom: 6px;
+export const ModalContainer = styled.View`
+    flex: 1;
+    background-color: rgba(0,0,0,0.3);
+    justify-content: flex-end;
 `;
 
-export const CardTitle = styled.Text`
-    font-size: 16px;
-    font-family: ${({ theme }) => theme.fonts.SEMIBOLD};
-    color: ${({ theme, isComplete }) => isComplete ? theme.colors.gray['100'] : theme.colors.gray['400']};
+export const AddNoteContainer = styled.View`
+    height: 65%;
+    align-items: center;
+    padding-top: 24px;
+    background-color: ${({ theme }) => theme.colors.purple};
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
 `;
 
-export const CardText = styled.Text`
-    font-family: ${({ theme }) => theme.fonts.SEMIBOLD};
-    font-size: 12px;
-    opacity: 0.7;
-    color: ${({ theme, isComplete }) => isComplete ? theme.colors.gray['300'] : theme.colors.gray['200']};
-    width: 170px;
+export const Input = styled.TextInput`
+    background-color: ${({ theme }) => theme.colors.white};
+    height: ${({ isDescription }) => isDescription ? '50%' : '40px'};
+    width: 80%;
+    font-size: 13px;
+    margin-top: 12px;
+    padding-top: 3px;
+    border-radius: 8px;
+    padding-left: 24px;
+    font-family: ${({ theme }) => theme.fonts.BOLD};
+    color: ${({ theme }) => theme.colors.black[100]};
+`;
+
+export const CloseModalIcon = styled.Text`
+    font-size: 28px;
+    font-family: ${({ theme }) => theme.fonts.BOLD};;
+    color: ${({ theme }) => theme.colors.white};
+    position: absolute;
+    margin-top: 24px;
+    right: 32px;
 `;
