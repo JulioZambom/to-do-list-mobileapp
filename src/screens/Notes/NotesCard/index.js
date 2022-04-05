@@ -18,24 +18,24 @@ const NotesCard = ({noteId, noteTitle, noteText, noteIsChecked}) => {
     const theme = useContext(ThemeContext);
 
     async function handleToggleNotes() {
-        const { data } = await api.put('/note/'+noteId);
-        noteChecked === 1 ? 0 : 1;
+        noteChecked === 1 ? setNoteIsChecked(0) : setNoteIsChecked(1);
+        await api.put('/note/'+noteId);  
     }
 
     return(
-        <Card isComplete={noteIsChecked}>
+        <Card isComplete={noteChecked}>
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-            <CardTitle isComplete={noteIsChecked}>{noteTitle}</CardTitle>
+            <CardTitle isComplete={noteChecked}>{noteTitle}</CardTitle>
             <TouchableWithoutFeedback onPress={handleToggleNotes}>
                 <IconsFontAwesome
-                    name={noteIsChecked ? 'check-circle' : 'check-circle-o'}
+                    name={noteChecked ? 'check-circle' : 'check-circle-o'}
                     size={32} 
-                    color={ noteIsChecked ? theme.colors.gray['100'] : theme.colors.gray['100']}
+                    color={ noteChecked ? theme.colors.gray['100'] : theme.colors.gray['100']}
                 />
             </TouchableWithoutFeedback>
         </View>       
         <View>
-            <CardText numberOfLines={3} isComplete={noteIsChecked}>
+            <CardText numberOfLines={3} isComplete={noteChecked}>
             {noteText}
         </CardText>
         </View>      

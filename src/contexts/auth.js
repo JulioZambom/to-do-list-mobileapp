@@ -10,9 +10,11 @@ export const AuthProvider = ({ children }) => {
 
     const [token, setToken] = useState(null);
     const [user, setUser] = useState(null);
+    const [userId, setUserId] = useState();
 
     const navigation = useNavigation();
 
+    console.log({userId});
     function showToast(text) {
         ToastAndroid.showWithGravityAndOffset(
             text,
@@ -25,10 +27,13 @@ export const AuthProvider = ({ children }) => {
         async function loadStoragedData() {
             const storagedUser = await AsyncStorage.getItem('@Auth:user');
             const storagedToken = await AsyncStorage.getItem('@Auth:token');
+            const storagedUserId = await AsyncStorage.getItem('@Auth:userId');
 
-            if (storagedUser && storagedToken) {
+            console.log({storagedUserId});
+            if (storagedUser && storagedToken && storagedUserId) {
               setUser(JSON.parse(storagedUser));
               setToken(JSON.parse(storagedToken));
+              setUserId(JSON.parse(storagedUserId));
             }
         }
 
@@ -38,6 +43,8 @@ export const AuthProvider = ({ children }) => {
     async function signIn(email, password) {
         try {
             const { data } = await api.post('/auth/login', {email, password});
+            console.log(data);
+            setUserId(data.user.id);
             setUser(data.user.name);
             const token = data.token;
             await AsyncStorage.setItem('@Auth:user', JSON.stringify(data.user.name));
@@ -61,6 +68,8 @@ export const AuthProvider = ({ children }) => {
     function logOut() {
         AsyncStorage.clear().then(() => {
             setUser(null);
+            setUserId(null);
+            setToken(null);
         });
     };
 
@@ -68,6 +77,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider 
     value={{signed: user != null ? true : false,
     user: user,
+    userId,
     token,
     signIn,
     signUp,
