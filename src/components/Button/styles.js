@@ -12,6 +12,6 @@ export const ButtonSubmit = styled.TouchableOpacity`
 
 export const ButtonSubmitText = styled.Text`
     color: ${({ theme }) => theme.colors.white};
-    font-family: ${({ theme }) => theme.fonts.SEMIBOLD};
+    font-family: ${({ theme }) => theme.fonts.BOLD};
     font-size: 13px;
 `;

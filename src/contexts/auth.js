@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
 
     const navigation = useNavigation();
 
-    console.log({userId});
     function showToast(text) {
         ToastAndroid.showWithGravityAndOffset(
             text,
@@ -28,8 +27,7 @@ export const AuthProvider = ({ children }) => {
             const storagedUser = await AsyncStorage.getItem('@Auth:user');
             const storagedToken = await AsyncStorage.getItem('@Auth:token');
             const storagedUserId = await AsyncStorage.getItem('@Auth:userId');
-
-            console.log({storagedUserId});
+            
             if (storagedUser && storagedToken && storagedUserId) {
               setUser(JSON.parse(storagedUser));
               setToken(JSON.parse(storagedToken));
@@ -43,7 +41,6 @@ export const AuthProvider = ({ children }) => {
     async function signIn(email, password) {
         try {
             const { data } = await api.post('/auth/login', {email, password});
-            console.log(data);
             setUserId(data.user.id);
             setUser(data.user.name);
             const token = data.token;

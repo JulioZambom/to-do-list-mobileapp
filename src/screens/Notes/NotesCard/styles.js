@@ -3,10 +3,11 @@ import styled from 'styled-components/native';
 export const Card = styled.View`
     background-color: ${({ theme, isComplete }) => isComplete ? theme.colors.gray['200'] : theme.colors.white};
     border-radius: 20px;
-    padding: 12px 16px;
-    height: 107px;
-    margin-top: 6px;
+    padding: 20px 24px;
+    height: 125px;
+    margin-top: 10px;
     margin-bottom: 6px;
+    
 `;
 
 export const CardTitle = styled.Text`
